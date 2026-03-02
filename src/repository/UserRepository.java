@@ -1,13 +1,14 @@
 package repository;
 import domain.User;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface UserRepository {
 
-    void salvar_usuario(User user);
-    User buscar_usuario(Long id_user);
-    ArrayList<User> listar_usuarios();
-    void deletar_usuario(Long id);
-    void atualizar_usuario(User user);
+    void save(User user);
+    User search(Long id_user);
+    List<User> list();
+    void delete(Long id);
+    void update(User user);
+    boolean userExists(Long id);
 }

@@ -2,7 +2,7 @@ package service;
 import domain.User;
 import repository.UserRepository;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class UserService {
 
@@ -11,23 +11,37 @@ public class UserService {
         this.repository = repository;
     }
 
-    public void criar_usuario(Long id_user, String nome, String data_nascimento){
-        if(repository.buscar_usuario(id_user) != null){
-            throw new Error("ID já usado");
+    public User createUser(Long id_user, String nome, String data_nascimento){
+        verifyData(id_user, nome, data_nascimento);
+        if (!verifyData(id_user, nome, data_nascimento)) {
+            throw new IllegalArgumentException("Erro ao criar usuario: id, nome e data de nascimento são obrigatórios. O nome deve conter pelo menos 3 caracteres.");
         }
 
         User user = new User(id_user, nome, data_nascimento);
-        repository.salvar_usuario(user);
+        repository.save(user);
+        return user;
     }
 
-    public ArrayList<User> listar_usuario(){
-        return repository.listar_usuarios();
+    public List<User> listUser(){
+        return repository.list();
     }
 
-    public void atualizar_usuario(User user){
-        repository.atualizar_usuario(user);
+    public void updateUser(User user){
+        repository.update(user);
     }
-    public void deletar_usuario(Long id_user) {
-        repository.deletar_usuario(id_user);
+
+    public void deletarUsuario(Long id_user) {
+        repository.delete(id_user);
+    }
+
+    public User searchUser(Long id) {
+        return repository.search(id);
+    }
+
+    public boolean verifyData(Long id, String nome, String birthday) {
+        if (id == null || nome == null || nome.length() < 3 || birthday == null) {
+            return false;
+        }
+        return true;
     }
 }

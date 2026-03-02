@@ -3,24 +3,33 @@ package domain;
 public class User {
 
     private Long id_user;
-    private String nome;
-    private String data_nascimento;
+    private String name;
+    private String birthday;
 
-    public User(Long id_user, String nome, String data_nascimento) {
+    public User(Long id_user, String name, String birthday) {
         this.id_user = id_user;
-        this.data_nascimento = data_nascimento;
-        this.nome = nome;
+        this.birthday = birthday;
+        this.name = name;
     }
 
-    public String pegar_nome() {
-        return this.nome;
+    public String getName() {
+        return this.name;
     }
 
-    public String pegar_nascimento() {
-        return this.data_nascimento;
+    public String getBirthday() {
+        return this.birthday;
     }
 
-    public Long pegar_Iduser() {
+    public Long getId() {
         return this.id_user;
+    }
+
+    @Override
+    public String toString() {
+        return "User {" +
+                "id_user=" + this.id_user +
+                ", nome='" + this.name + '\'' +
+                ", data_nascimento='" + this.birthday + '\'' +
+                '}';
     }
 }

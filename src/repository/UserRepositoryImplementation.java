@@ -3,41 +3,46 @@ package repository;
 import domain.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepositoryImplementation implements UserRepository{
 
-    private ArrayList<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     @Override
-    public void salvar_usuario(User user) {
+    public void save(User user) {
         users.add(user);
         System.out.println("Usuario salvo");
     }
 
     @Override
-    public User buscar_usuario(Long id) {
-
+    public User search(Long id) {
         return users.stream()
-                .filter(u -> u.pegar_Iduser().equals(id))
+                .filter(u -> u.getId().equals(id))
                 .findFirst()
                 .orElse(null);
     }
 
     @Override
-    public ArrayList<User> listar_usuarios() {
+    public List<User> list() {
         return users;
     }
 
     @Override
-    public void deletar_usuario(Long id) {
-        users.removeIf(u -> u.pegar_Iduser().equals(id));
+    public void delete(Long id) {
+        users.removeIf(u -> u.getId().equals(id));
         System.out.println("Usuario deletado");
     }
 
     @Override
-    public void atualizar_usuario(User user) {
-        deletar_usuario(user.pegar_Iduser());
-        salvar_usuario(user);
+    public void update(User user) {
+        delete(user.getId());
+        save(user);
         System.out.println("Usuario atualizado");
+    }
+
+    @Override
+    public boolean userExists(Long id) {
+        return users.stream().anyMatch(u -> u.getId().equals(id));
     }
 }
