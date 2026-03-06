@@ -11,13 +11,13 @@ public class UserService {
         this.repository = repository;
     }
 
-    public User createUser(Long id_user, String nome, String data_nascimento){
-        verifyData(id_user, nome, data_nascimento);
-        if (!verifyData(id_user, nome, data_nascimento)) {
+    public User createUser(String nome, String data_nascimento){
+        Long idUser = System.currentTimeMillis();
+        if (!verifyData(idUser, nome, data_nascimento)) {
             throw new IllegalArgumentException("Erro ao criar usuario: id, nome e data de nascimento são obrigatórios. O nome deve conter pelo menos 3 caracteres.");
         }
 
-        User user = new User(id_user, nome, data_nascimento);
+        User user = new User(idUser, nome, data_nascimento);
         repository.save(user);
         return user;
     }
@@ -26,12 +26,19 @@ public class UserService {
         return repository.list();
     }
 
-    public void updateUser(User user){
-        repository.update(user);
+    public User updateUser(User user){
+
+        User currentUser = repository.search(user.getId());
+        if (currentUser == null) {
+            throw new IllegalArgumentException("Usuario nao encontrado");
+        }
+
+        User updatedUser = new User(currentUser.getId(), user.getName(), user.getBirthday());
+        return repository.update(updatedUser);
     }
 
-    public void deletarUsuario(Long id_user) {
-        repository.delete(id_user);
+    public void deletarUsuario(Long idUser) {
+        repository.delete(idUser);
     }
 
     public User searchUser(Long id) {

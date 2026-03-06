@@ -20,9 +20,7 @@ public class Order {
         return this.userId;
     }
 
-    public Long getIdOrder() {
-        return this.idOrder;
-    }
+    public Long getIdOrder() { return this.idOrder; }
 
     public List<OrderItem> getItems() {
         return this.items;
@@ -30,5 +28,15 @@ public class Order {
 
     public OrderState getState() {
         return this.state;
+    }
+
+    @Override
+    public String toString() {
+        return "Order {"+ " \n" +
+                " id=" + this.idOrder + ", \n" +
+                " userId=" + this.userId + ", \n" +
+                " items=" + this.items + ", \n" +
+                " state=" + this.state + ", \n" +
+                " }";
     }
 }

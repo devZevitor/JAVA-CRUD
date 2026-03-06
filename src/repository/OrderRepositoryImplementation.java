@@ -8,9 +8,10 @@ public class OrderRepositoryImplementation implements OrderRepository{
     private List<Order> orders = new ArrayList<>();
 
     @Override
-    public void save(Order order) {
+    public Order save(Order order) {
         orders.add(order);
         System.out.println("Pedido salvo");
+        return order;
     }
 
     @Override
@@ -36,9 +37,9 @@ public class OrderRepositoryImplementation implements OrderRepository{
     }
 
     @Override
-    public void update(Order order) {
+    public Order update(Order order) {
         delete(order.getIdOrder());
-        save(order);
         System.out.println("Pedido atualizado");
+        return save(order);
     }
 }

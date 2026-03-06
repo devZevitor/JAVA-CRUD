@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface OrderRepository {
     // CRUD Order
-    void save(Order order);
+    Order save(Order order);
     Order search(Long idOrder);
     List<Order> list(Long idUser);
     void delete(Long idOrder);
-    void update(Order order);
+    Order update(Order order);
 }

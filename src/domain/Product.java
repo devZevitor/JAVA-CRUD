@@ -14,6 +14,8 @@ public class Product {
         this.price = price;
     }
 
+    public Long getIdProduct() { return this.idProduct; }
+
     public String getName(){
         return this.name;
     }
@@ -24,5 +26,15 @@ public class Product {
 
     public String getDescription(){
         return this.description;
+    }
+
+    @Override
+    public String toString(){
+        return "Product {"+ " \n" +
+                " id=" + this.idProduct + ", \n" +
+                " nome=" + this.name + ", \n" +
+                " description=" + this.description + ", \n" +
+                " price=" + this.price + ", \n" +
+                " }";
     }
 }

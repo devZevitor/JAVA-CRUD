@@ -26,7 +26,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User {" +
+        return "User {"+ " \n" +
                 "id_user=" + this.id_user +
                 ", nome='" + this.name + '\'' +
                 ", data_nascimento='" + this.birthday + '\'' +

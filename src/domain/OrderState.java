@@ -11,9 +11,6 @@ public enum OrderState {
         this.description = description;
     }
 
-    public void setDescription(OrderState newStatus) {
-        this.description = newStatus.description;
-    }
     public String getDescription() {
         return this.description;
     }

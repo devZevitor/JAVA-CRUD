@@ -35,10 +35,11 @@ public class UserRepositoryImplementation implements UserRepository{
     }
 
     @Override
-    public void update(User user) {
+    public User update(User user) {
         delete(user.getId());
         save(user);
         System.out.println("Usuario atualizado");
+        return user;
     }
 
     @Override
