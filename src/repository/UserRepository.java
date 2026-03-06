@@ -9,6 +9,6 @@ public interface UserRepository {
     User search(Long id_user);
     List<User> list();
     void delete(Long id);
-    void update(User user);
+    User update(User user);
     boolean userExists(Long id);
 }
