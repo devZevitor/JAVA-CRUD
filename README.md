@@ -1,32 +1,24 @@
-# CRUD-JAVA 🚗
-Projeto Java com foco na implementação de um CRUD (Create, Read, Update e Delete).
+# CRUD-JAVA
 
-Este repositório contém os primeiros passos do projeto — uma base sólida em Java e Programação Orientada a Objetos (POO) — para preparação antes de implementar o CRUD completo.
+Sistema CRUD completo com **User**, **Product** e **Order** implementado em Java puro com arquitetura DDD (Domain-Driven Design).
 
 ---
 
 ## 📚 Sobre o Projeto
 
-Este projeto tem como objetivo principal aprender e praticar a sintaxe do Java e os fundamentos de POO antes de evoluir para um CRUD completo.
-
-Até o momento, foram aplicados diversos conceitos fundamentais da linguagem.
+Primeiro projeto Java aplicando CRUD multi-entidade com separação de camadas (domain, repository, service, UI) e demonstração prática de relacionamentos entre entidades.
 
 ---
 
 ## 🧠 Conceitos Aplicados
 
-- Estrutura básica de classes
-- Construtores
-- Modificadores de acesso (`public`, `protected`)
-- Organização em `package`
-- Herança (`extends`)
-- Classes abstratas
-- Interfaces (`implements`)
-- Polimorfismo
-- Uso de `super()`
-- Tratamento de exceções (`try/catch`)
-- Arrays
-- Separação de responsabilidades
+- Domain-Driven Design (DDD)
+- Padrão Repository
+- Injeção de Dependência
+- Enums e Value Objects
+- Streams API (`.filter()`, `.findFirst()`, `.toList()`)
+- Exception Handling
+- Relacionamentos entre entidades
 
 ---
 
@@ -35,10 +27,8 @@ Até o momento, foram aplicados diversos conceitos fundamentais da linguagem.
 ```text
 Crud/
 ├── src/
-│    └── java_crud/
-│         ├── Motor.java
-│         ├── Carro.java
-│         ├── Gol.java
-│         └── Main.java
-├── .gitignore
+│    ├── domain/          # Entidades (User, Product, Order, OrderItem, OrderState)
+│    ├── repository/      # Interfaces e implementações (persistência em memória)
+│    ├── service/         # Lógica de negócio e validações
+│    └── UI/              # Main.java (demonstração do fluxo completo)
 └── README.md
